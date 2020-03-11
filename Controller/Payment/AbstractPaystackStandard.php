@@ -114,7 +114,7 @@ abstract class AbstractPaystackStandard extends \Magento\Framework\App\Action\Ac
         if ($this->method->getConfigData('test_mode')) {
             $secretKey = $this->method->getConfigData('test_secret_key');
         }
-        return new \Yabacon\Paystack($secretKey);
+        return new \Yabacon\Paystack('test_secret_key');
     }
     
     protected function redirectToFinal($successFul = true, $message="") {

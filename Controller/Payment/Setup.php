@@ -48,10 +48,21 @@ class Setup extends AbstractPaystackStandard {
     }
 
     protected function processAuthorization(\Magento\Sales\Model\Order $order) {
-        $tranx = $this->paystack->transaction->initialize([
+
+	// add the fee just before sending
+	$fee = new \Yabacon\Paystack\Fee();
+	$fee->withPercentage(0.015);        // 1.5%
+	$fee->withAdditionalCharge(10000);  // plus 100 NGN
+	$fee->withThreshold(250000);        // when total is above 2,500 NGN
+	$fee->withCap(200000);              // capped at 2000
+
+	// now let's calculate the fees
+        $charges = $fee->calculateFor($order->getGrandTotal() * 100);
+
+	$tranx = $this->paystack->transaction->initialize([
             'first_name' => $order->getCustomerFirstname(),
             'last_name' => $order->getCustomerLastname(),
-            'amount' => $order->getGrandTotal() * 100, // in kobo
+            'amount' => ($order->getGrandTotal() * 100) + $charges, // in kobo
             'email' => $order->getCustomerEmail(), // unique to customers
             'reference' => $order->getIncrementId(), // unique to transactions
             'currency' => $order->getCurrency(),

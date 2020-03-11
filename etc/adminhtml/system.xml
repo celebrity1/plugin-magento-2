@@ -22,9 +22,9 @@
                     <label>Integration Type</label>
                     <source_model>Pstk\Paystack\Model\Config\Source\IntegrationType</source_model>
                 </field>
-                <field id="test_secret_key" translate="label" type="obscure" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="test_secret_key" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Test Secret Key</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    
                 </field>
                 <field id="test_public_key" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Test Public Key</label>
