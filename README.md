@@ -4,7 +4,7 @@
 
 ## Paystack Magento 2 Module
 
-Paystack payment gateway Magento2 extension
+Paystack payment gateway Magento2 extension with transactional fee implementation
 
 ## Install
 
@@ -69,3 +69,5 @@ If you are a developer, please join our Developer Community on [Slack](https://s
 
 If you have a patch or have stumbled upon an issue with the Magento 2 plugin, you can contribute this back to the code. Please read our [contributor guidelines](https://github.com/PaystackHQ/plugin-magento-2/blob/master/CONTRIBUTING.md) for more information how you can do this.
 
+## TODO
+@Todo: Test secret key error on Mage2.3.3-p1
